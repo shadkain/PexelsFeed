@@ -4,13 +4,13 @@ import SwiftUI
 struct PexelsFeedApp: App {
     private let feedImageCache = {
         let cache = InMemoryImageCache()
-        cache.countLimit = 1000
+        cache.countLimit = .feedCacheCountLimit
         return cache
     }()
     
     private let fullScreenImageCache = {
         let cache = InMemoryImageCache()
-        cache.countLimit = 50
+        cache.countLimit = .fullscreenCacheCountLimit
         return cache
     }()
     
@@ -25,4 +25,11 @@ struct PexelsFeedApp: App {
             )
         }
     }
+}
+
+// MARK: - Constants
+
+private extension Int {
+    static let feedCacheCountLimit = 1_000
+    static let fullscreenCacheCountLimit = 50
 }
