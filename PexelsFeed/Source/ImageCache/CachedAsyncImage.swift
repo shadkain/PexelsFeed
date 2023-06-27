@@ -37,14 +37,14 @@ struct CachedAsyncImage<Content: View>: View {
                 scale: scale,
                 transaction: transaction
             ) { phase in
-                cacheImage(phase: phase)
+                cachedImage(phase: phase)
             }
         }
     }
     
     // MARK: - Private
     
-    private func cacheImage(phase: AsyncImagePhase) -> some View {
+    private func cachedImage(phase: AsyncImagePhase) -> some View {
         if case let .success(image) = phase {
             imageCache.setImage(image, for: url.absoluteString)
         }
